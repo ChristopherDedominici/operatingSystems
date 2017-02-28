@@ -1,0 +1,36 @@
+#!/usr/bin/awk -f
+
+{
+ count++;
+ vet[count]=$1
+ vet_N[count]=$2
+}
+
+END{
+
+for(i=1; i<=count-1; i++)
+ {
+   for(j=1; j<=count-1-i; j++)
+    {
+      if(vet[j]>vet[j+1])
+      {
+        tmp=vet[j+1];
+        vet[j+1]=vet[j];
+        vet[j]=tmp;  
+
+        tmp_N=vet_N[j+1];
+        vet_N[j+1]=vet_N[j];
+        vet_N[j]=tmp_N; 
+      }
+    }
+
+
+ }
+
+for(i=1; i<=count; i++)
+printf("%s %s\n", vet[i], vet_N[i]);
+
+
+}
+ 
+

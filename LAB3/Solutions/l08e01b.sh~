@@ -1,0 +1,2 @@
+find $1 -type f -exec grep -H -n "$2 *(.*)" \{} \; | sort -t ':' -k 1 -k 2rn >> $3
+rm -f tmp.txt

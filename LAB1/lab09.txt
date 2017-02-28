@@ -1,0 +1,60 @@
+Laurea in Ingegneria Informatica
+Corso di Sistemi Operativi
+Esercizi proposti per il laboratorio
+ 
+Esercitazione di laboratorio numero 09
+--------------------------------------
+
+Esercizio 01
+------------
+
+Realizzare il grafo di precedenza successivo
+
+       A  <--------
+    /  |  \       ^
+   /   |   \      |
+  B    C    D     |
+  |   / \   |     |
+  |  /   \  |     |
+  | E    F  |     |
+  |  \   /  |     |
+  |   \ /   |     |
+  |    G    H     |
+   \   |   /      |
+    \  |  /       |
+       I  ---------
+
+in cui a ciascun vertice corrisponde un *processo*
+indipendente.
+Tutti i processi siano (ri-)creati e distrutti a ogni
+iterazione del ciclo principale.
+I semafori siano realizzati tramite pipe.
+Utilizzare il numero minimo di semafori.
+
+
+
+Esercizio 02
+------------
+
+Realizzare il grafo di precedenza dell'esercizio 1
+in modo che a ciascun vertice corrisponda un *thread*.
+Tutti i thread siano (ri-)creati e distrutti a ogni
+iterazione del ciclo principale.
+I semafori siano realizzati tramite libreria POSIX
+e tipi/funzioni sem_*.
+Utilizzare il numero minimo di semafori.
+
+
+
+Esercizio 03
+------------
+
+Realizzare il grafo di precedenza dell'esercizio 1
+in modo che a ciascun vertice corrisponda un thread
+*ciclico*, ovvero il cui corpo venga ripetuto
+sino a quando il thread termina.
+Tutti i thread siano creati un'unica volta prima del ciclo
+principale.
+I semafori siano realizzati tramite libreria POSIX
+e tipi/funzioni sem_*.
+Utilizzare il numero minimo di semafori.

@@ -1,0 +1,60 @@
+a.
+ps -el | awk '$4 == 1 {print $NF}' output_ps.txt
+
+
+b.
+
+#!/usr/bin/awk -f
+
+(($2=="R") || ($2=="R+")){
+	printf("%s %s\n", $4, $14); 
+}
+
+
+c.
+
+#!/usr/bin/awk -f
+
+(($2=="R") || ($2=="R+")){
+  vet[$14] = $4
+  count_elem++;
+}
+
+END {
+  for(i=count_elem; i>0; i--){
+    max = 0;
+    for(j in vet){
+      if(!(vet[j] in checked)){
+        if(vet[j] > max){
+          max = vet[j];
+          max_elem = j;
+        }
+      }
+    }
+    max_vet[i] = max;
+    checked[max] = max_elem;
+  }
+
+  for(i=count_elem; i>0; i--){
+    printf("%s %s\n", max_vet[i], checked[max_vet[i]]);
+  }
+}
+
+
+
+d.
+
+#!/usr/bin/awk -f
+
+(($2=="R") || ($2=="R+")){
+  print $4 " " $NF >> "temp4"
+}
+
+END {
+  system ("sort -r -k 1 -n temp4")
+  system ("rm -f temp4")
+}
+
+Oppure
+
+awk '$2 ~ /R\+{0,1}$/ {print $4 " " $NF}' output_ps.txt | sort -r -k 1 -n

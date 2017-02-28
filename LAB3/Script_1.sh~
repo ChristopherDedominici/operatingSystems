@@ -1,0 +1,34 @@
+#!/bin/bash
+
+for i in 1 2 3 4 5
+do
+  stato=$( ps -el |  cut -d " " -f 2 | grep $1 )
+  
+  
+
+  if [ $stato = "S" ]
+  then
+      echo $stato
+  else
+      echo process not killed
+      
+      exit 1       
+  fi  
+  sleep 2
+
+
+
+
+done
+
+pid=$( ps -el | grep $1 | tr -s " " | cut -f 4 -d " " )
+
+kill -KILL $pid
+
+echo process killed
+ps -el | grep vlc
+
+
+
+
+exit 0
